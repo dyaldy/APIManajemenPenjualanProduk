@@ -20,7 +20,7 @@ class Customer extends Model
         'postal_code',
     ];
     
-
+    //relasi
     public function invoices(){
         return $this->hasMany(Invoice::class);
     }
