@@ -25,6 +25,7 @@ class UpdateInvoiceRequest extends FormRequest
 
             return [
                 'customerId' => ['required','integer'],
+                'productId' => ['required', 'string', 'max:255'],
                 'amount' => ['required', 'numeric'],
                 'status' => ['required', Rule::in(['B','P','V','b','p','v'])],
                 'billedDate' => ['required', 'date_format:Y-m-d H:i:s'],
@@ -33,6 +34,7 @@ class UpdateInvoiceRequest extends FormRequest
         } else {
             return [
                 'customerId' => ['sometimes', 'required','integer'],
+                'productId' => ['sometimes', 'required', 'string', 'max:255'],
                 'amount' => ['sometimes','required', 'numeric'],
                 'status' => ['sometimes','required', Rule::in(['B','P','V','b','p','v'])],
                 'billedDate' => ['sometimes','required', 'date_format:Y-m-d H:i:s'],
@@ -46,6 +48,7 @@ class UpdateInvoiceRequest extends FormRequest
         if ($this->customer_id or $this->billedDate or $this->paidDate) {
             $this->merge([
                 'customer_id' => $this->customerId,
+                'product_id' => $this->productId,
                 'billed_date' => $this->billedDate,
                 'paid_date' => $this->paidDate
             ]);

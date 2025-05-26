@@ -91,7 +91,7 @@ class InvoiceController extends Controller
  
         //cek kalau kategori tidak ditemukan
         if(!$invoice) {
-            return response()->json(['message' => 'Kategori tidak ditemukan'],404);
+            return response()->json(['message' => 'Invoice tidak ditemukan'],404);
         }
 
         //hapus dari tabel kategori

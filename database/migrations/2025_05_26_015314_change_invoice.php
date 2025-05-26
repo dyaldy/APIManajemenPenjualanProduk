@@ -11,17 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kategoris', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('invoices', function (Blueprint $table) {
+            $table->renameColumn('product', 'product_id'); // Just rename, no constraint
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
     public function down(): void
     {
-        Schema::dropIfExists('kategoris');
+        Schema::table('invoices', function (Blueprint $table) {
+            $table->renameColumn('product_id', 'product');
+        });
     }
 };

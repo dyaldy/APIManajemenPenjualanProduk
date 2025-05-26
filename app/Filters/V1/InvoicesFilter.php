@@ -8,6 +8,7 @@ use App\Filters\ApiFilter;
 class InvoicesFilter extends ApiFilter {
     protected $safeParms = [
         'customerId' => ['eq'],
+        'productId' => ['eq','ne','like'],
         'amount' => ['eq','gt','lt','lte','gte'],
         'status' => ['eq','ne'],
         'billedDate' => ['eq','gt','lt','lte','gte'],
@@ -16,6 +17,7 @@ class InvoicesFilter extends ApiFilter {
 
     protected $columnMap = [
         'customerId' => 'customer_id',
+        'productId' => 'product_id',
         'billedDate' => 'billed_date',
         'paidDate' => 'paid_date'
     ];

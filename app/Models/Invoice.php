@@ -12,13 +12,20 @@ class Invoice extends Model
 
     protected $fillable = [
         'customer_id',
+        'product_id',  // Changed from 'product' to 'product_id'
         'amount',
         'status',
         'billed_date',
         'paid_date',
     ];
 
-    public function customer(){
+    public function customer()
+    {
         return $this->belongsTo(Customer::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
     }
 }
